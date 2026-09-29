@@ -1,0 +1,11 @@
+{
+  "id": "security-headers",
+  "name": "Security Headers Analyzer",
+  "version": "1.0.0",
+  "author": "Pen-Lab contributors",
+  "description": "Adds a deterministic detector that reports missing HTTP security response headers, plus a knowledge-base technique entry.",
+  "minimum_app_version": "0.1.0",
+  "entry_point": "plugin.py:SecurityHeadersPlugin",
+  "permissions": ["register_detector", "import_knowledge"],
+  "dependencies": []
+}
