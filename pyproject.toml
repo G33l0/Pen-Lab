@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pen-lab"
+version = "0.1.0"
+description = "Cross-platform penetration-testing knowledge & operations workstation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Pen-Lab contributors" }]
+dependencies = [
+    "SQLAlchemy>=2.0,<3.0",
+    "PyYAML>=6.0",
+    "requests>=2.28",
+]
+
+[project.optional-dependencies]
+gui = ["PyQt6>=6.5,<7.0"]
+dev = ["pytest>=7.0", "pytest-cov>=4.0", "PyQt6>=6.5,<7.0"]
+build = ["pyinstaller>=6.0", "PyQt6>=6.5,<7.0"]
+
+[project.scripts]
+pen-lab = "pentest_workstation.app.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pentest_workstation*"]
+
+[tool.setuptools.package-data]
+"pentest_workstation" = ["data/**/*.yaml", "data/**/*.yml", "app/resources/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]
+markers = [
+    "gui: tests that require a Qt runtime (run headless with QT_QPA_PLATFORM=offscreen)",
+    "network: tests that reach out to the network (skipped by default)",
+]
