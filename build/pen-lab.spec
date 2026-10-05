@@ -26,14 +26,17 @@ hiddenimports = [
 block_cipher = None
 
 a = Analysis(
-    [str(ROOT / "pentest_workstation" / "app" / "main.py")],
+    [str(ROOT / "pentest_workstation" / "__main__.py")],
     pathex=[str(ROOT)],
     binaries=[],
     datas=datas,
     hiddenimports=hiddenimports,
     hookspath=[],
     runtime_hooks=[],
-    excludes=["tkinter"],
+    # tkinter is never used (PyQt6 only). 'cryptography' is not a Pen-Lab
+    # dependency (HTTP uses requests + stdlib ssl); excluding it avoids pulling
+    # an unrelated/optional transitive package into the bundle.
+    excludes=["tkinter", "cryptography", "OpenSSL"],
     cipher=block_cipher,
     noarchive=False,
 )

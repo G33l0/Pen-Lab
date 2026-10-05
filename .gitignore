@@ -31,3 +31,6 @@ Thumbs.db
 # IDE
 .idea/
 .vscode/
+
+# PyInstaller work dir
+build/_work/
