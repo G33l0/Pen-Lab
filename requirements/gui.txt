@@ -1,0 +1,4 @@
+-r base.txt
+# GUI layer. Kept separate so headless/CI installs (services + tests) do not
+# require a Qt runtime.
+PyQt6>=6.5,<7.0
